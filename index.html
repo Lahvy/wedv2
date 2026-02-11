@@ -449,3 +449,114 @@
         // HERO FOTO (dej soubor do /photos jako intro.jpg / intro.png / intro.webp …)
         heroPhotoBase: "photos/intro",
         heroPhotoFallback:
+          "https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&fit=crop&w=1600&q=80",
+      };
+
+      // Init icons
+      lucide.createIcons();
+
+      // HERO photo loader: zkusí najít photos/intro.* (jpg/png/webp/jpeg/avif)
+      // když nic nenajde, nechá fallback (placeholder)
+      (function setHeroPhoto() {
+        const imgEl = document.getElementById("heroPhoto");
+        if (!imgEl) return;
+
+        const tipEl = document.getElementById("heroTip");
+
+        const candidates = ["webp", "jpg", "jpeg", "png", "avif"].map(
+          (ext) => `${CONFIG.heroPhotoBase}.${ext}`
+        );
+
+        // nastav fallback hned (aby se něco zobrazilo okamžitě)
+        imgEl.src = CONFIG.heroPhotoFallback;
+
+        let i = 0;
+        const tryNext = () => {
+          if (i >= candidates.length) return; // nic se nenašlo → zůstane fallback
+          const test = new Image();
+          const url = candidates[i++];
+          test.onload = () => {
+            imgEl.src = url;
+            if (tipEl) tipEl.classList.add("hidden"); // když se načte vlastní fotka, skryj tip
+          };
+          test.onerror = tryNext;
+          test.src = url;
+        };
+
+        tryNext();
+      })();
+
+      // Fill text
+      document.getElementById("coupleName").textContent = CONFIG.couple;
+      document.getElementById("coupleNameFooter").textContent = CONFIG.couple;
+      document.getElementById("venueName").textContent = CONFIG.venueName;
+      document.getElementById("venueNameInline").textContent = CONFIG.venueName;
+      document.getElementById("venueAddress").textContent = CONFIG.venueAddress;
+      document.getElementById("venueAddressInline").textContent = CONFIG.venueAddress;
+      document.getElementById("rsvpEmailLink").textContent = CONFIG.rsvpEmail;
+      document.getElementById("rsvpEmailLink").href = `mailto:${CONFIG.rsvpEmail}`;
+
+      // Maps link
+      const q = encodeURIComponent(`${CONFIG.venueName} ${CONFIG.venueAddress}`);
+      document.getElementById("mapsLink").href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+
+      // Pretty date + year
+      const weddingDate = new Date(CONFIG.weddingDateISO);
+      document.getElementById("datePretty").textContent =
+        weddingDate.toLocaleDateString("cs-CZ", { dateStyle: "long" });
+      document.getElementById("weddingYear").textContent = weddingDate.getFullYear();
+
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile menu toggle (a zavírání po kliku)
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      mobileMenu
+        .querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", () => mobileMenu.classList.add("hidden")));
+
+      // Fade-up reveal
+      const els = document.querySelectorAll(".fade-up");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => e.isIntersecting && e.target.classList.add("show"));
+        },
+        { threshold: 0.12 }
+      );
+      els.forEach((el) => io.observe(el));
+
+      // Countdown
+      function updateCountdown() {
+        const now = new Date();
+        let diff = weddingDate.getTime() - now.getTime();
+        diff = Math.max(0, diff);
+
+        const sec = Math.floor(diff / 1000);
+        const d = Math.floor(sec / 86400);
+        const h = Math.floor((sec % 86400) / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+
+        document.getElementById("cdD").textContent = d;
+        document.getElementById("cdH").textContent = h;
+        document.getElementById("cdM").textContent = m;
+        document.getElementById("cdS").textContent = s;
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // RSVP demo submit
+      document.getElementById("rsvpForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const ok = document.getElementById("rsvpOk");
+        ok.classList.remove("hidden");
+        setTimeout(() => ok.classList.add("hidden"), 5000);
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>

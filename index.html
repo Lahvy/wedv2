@@ -492,49 +492,6 @@ a.muj-odkaz:hover {
         </div>
       </section>
 
-      <!-- RSVP -->
-      <section id="rsvp" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 p-6 md:p-10 grid lg:grid-cols-2 gap-6 items-start fade-up">
-          <div>
-            <div class="inline-flex items-center gap-2 rounded-3xl bg-zinc-100 px-3 py-1 text-sm">
-              <i data-lucide="mail" class="w-4 h-4"></i> RSVP
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mt-3">Potvrzení účasti</h2>
-            <p class="text-zinc-600 mt-3">
-              Pro demo se to jen zobrazí jako “odesláno”. V reálu to může posílat e-mail / ukládat do Sheets / API.
-            </p>
-
-            <div class="rounded-3xl border bg-zinc-50 p-4 text-sm text-zinc-600 mt-6">
-              Nebo napište přímo na
-              <a id="rsvpEmailLink" class="text-zinc-950 underline" href="mailto:rsvp@example.com">rsvp@example.com</a>.
-            </div>
-          </div>
-
-          <form id="rsvpForm" class="rounded-3xl border bg-white p-6 space-y-3">
-            <div class="grid sm:grid-cols-2 gap-3">
-              <input class="rounded-3xl border border-zinc-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                     placeholder="Jméno" required />
-              <input class="rounded-3xl border border-zinc-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                     placeholder="Příjmení" required />
-            </div>
-
-            <input class="rounded-3xl border border-zinc-200 px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                   placeholder="Email" type="email" required />
-
-            <textarea class="rounded-3xl border border-zinc-200 px-4 py-3 w-full min-h-[120px] focus:outline-none focus:ring-2 focus:ring-zinc-300"
-                      placeholder="Poznámka (dietní omezení, +1, děti…)"></textarea>
-
-            <button class="w-full rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800" type="submit">
-              Odeslat RSVP
-            </button>
-
-            <div id="rsvpOk" class="hidden rounded-3xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm">
-              ✅ Díky! RSVP je pro demo “odesláno”.
-            </div>
-          </form>
-        </div>
-      </section>
-
       <footer class="py-12">
         <div class="rounded-3xl border border-zinc-200 bg-white p-6 md:p-8 fade-up flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div class="flex items-center gap-3">

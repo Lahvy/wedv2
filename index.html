@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svatba — Áďa &amp; Dominik</title>
+    <title>Svatba — Áďa &amp;amp; Dominik</title>
 
     <!-- Tailwind CDN (ideální pro demo / školení) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,7 +41,7 @@
               class="h-full w-full object-contain object-[center_80%] block"
             />
           </div>
-          <span class="font-bold text-xl">Áďa &amp; Domíno</span>
+          <span class="font-bold text-xl">Áďa &amp;amp; Domíno</span>
         </a>
 
         <nav class="hidden md:flex gap-4 text-sm font-medium">
@@ -180,7 +180,7 @@
               <img
                 id="heroPhoto"
                 class="absolute inset-0 w-full h-full object-cover"
-                src="https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&fit=crop&w=1600&q=80"
+                src="https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
                 alt="Úvodní fotka / pozvánka"
                 loading="lazy"
               />
@@ -198,7 +198,7 @@
 
       <!-- PŘÍBĚH -->
       <section id="pribeh" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="inline-flex items-center gap-2 rounded-3xl bg-gradient-to-br from-white to-zinc-200 px-3 py-1 text-sm">
             <i data-lucide="heart" class="w-4 h-4"></i> Náš příběh
           </div>
@@ -272,7 +272,7 @@
 
       <!-- MÍSTO -->
       <section id="misto" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="grid lg:grid-cols-2 gap-6 items-center">
             <div>
               <div class="inline-flex items-center gap-2 rounded-3xl bg-zinc-100 px-3 py-1 text-sm">
@@ -292,7 +292,7 @@
                   target="_blank"
                   rel="noreferrer"
                   class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
-                  href="https://www.google.com/maps/search/?api=1&query=Bohda%C5%A1%C3%ADn%2017"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Bohda%C5%A1%C3%ADn%2017"
                 >
                   Otevřít mapu <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                 </a>
@@ -319,7 +319,7 @@
 
       <!-- PARKOVÁNÍ -->
       <section id="parkovani" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="grid lg:grid-cols-2 gap-6 items-center">
             <div>
               <div class="inline-flex items-center gap-2 rounded-3xl bg-zinc-100 px-3 py-1 text-sm">
@@ -345,7 +345,7 @@
 
       <!-- UBYTOVÁNÍ -->
       <section id="ubytovani" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
             <i data-lucide="bed-double" class="w-4 h-4"></i> Ubytování
           </div>
@@ -376,7 +376,7 @@
 
       <!-- GALERIE -->
       <section id="galerie" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="inline-flex items-center gap-2 rounded-3xl bg-zinc-100 px-3 py-1 text-sm">
             <i data-lucide="camera" class="w-4 h-4"></i> Galerie
           </div>
@@ -445,7 +445,7 @@
 
       <!-- FAQ -->
       <section id="faq" class="py-12">
-        <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 md:p-10 fade-up">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
           <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
             <i data-lucide="help-circle" class="w-4 h-4"></i> FAQ
           </div>
@@ -504,7 +504,7 @@
     <script>
       // ==== Jednoduchá konfigurace (změň si hodnoty tady) ====
       const CONFIG = {
-        couple: "Áďa & Dominik",
+        couple: "Áďa &amp; Dominik",
         weddingDateISO: "2026-06-27T14:00:00+02:00",
         venueName: "Bohdašín 17",
         venueAddress: "Bohdašín 17, Červený Kostelec, 549 41",
@@ -512,7 +512,7 @@
         // HERO FOTO (dej soubor do /photos jako intro.jpg / intro.png / intro.webp …)
         heroPhotoBase: "photos/intro",
         heroPhotoFallback:
-          "https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&fit=crop&w=1600&q=80",
+          "https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&amp;fit=crop&amp;w=1600&amp;q=80",
       };
 
       // Init icons
@@ -572,7 +572,7 @@
       const mapsLinkEl = document.getElementById("mapsLink");
       if (mapsLinkEl) {
         const q = encodeURIComponent(`${CONFIG.venueName} ${CONFIG.venueAddress}`);
-        mapsLinkEl.href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+        mapsLinkEl.href = `https://www.google.com/maps/search/?api=1&amp;query=${q}`;
       }
 
       // Pretty date + year

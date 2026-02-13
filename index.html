@@ -55,8 +55,10 @@
         </nav>
 
         <div class="hidden md:flex gap-3">
-          <a href="#misto"
-             class="inline-flex items-center gap-2 rounded-3xl bg-zinc-950 text-white px-4 py-2 text-sm hover:bg-zinc-800">
+          <a
+            href="#misto"
+            class="inline-flex items-center gap-2 rounded-3xl bg-zinc-950 text-white px-4 py-2 text-sm hover:bg-zinc-800"
+          >
             <i data-lucide="map-pin" class="w-4 h-4"></i> Místo konání
           </a>
         </div>
@@ -136,33 +138,37 @@
                 </div>
               </div>
 
-              
-div class="flex flex-col sm:flex-row gap-3">
-  <a
-    href="https://forms.gle/TVUJ_GOOGLE_FORMS_ODKAZ"
-    target="_blank"
-    rel="noreferrer"
-    class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
-  >
-    Potvrdit účast
-    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-  </a>
+              <!-- CTA buttons (OPRAVENO) -->
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://forms.gle/TVUJ_GOOGLE_FORMS_ODKAZ"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
+                >
+                  Potvrdit účast
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
 
-  <a
-    href="#harmonogram"
-    class="inline-flex items-center justify-center gap-2 rounded-3xl border border-zinc-200 px-6 py-3 hover:bg-zinc-50"
-  >
-    <i data-lucide="calendar" class="w-4 h-4"></i>
-    Zobrazit harmonogram
-  </a>
-</div>
+                <a
+                  href="#harmonogram"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl border border-zinc-200 px-6 py-3 hover:bg-zinc-50"
+                >
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  Zobrazit harmonogram
+                </a>
+              </div>
 
-
+              <!-- Pills (adresa je klikací na #misto) -->
               <div class="flex flex-wrap gap-3 text-sm text-zinc-600">
-                <span class="inline-flex items-center gap-2 rounded-3xl border px-3 py-1 bg-white/60">
+                <a
+                  href="#misto"
+                  class="inline-flex items-center gap-2 rounded-3xl border px-3 py-1 bg-white/60 hover:bg-white/80"
+                >
                   <i data-lucide="map-pin" class="w-4 h-4"></i>
                   <span id="venueAddressInline">Bohdašín 17 Červený Kostelec 549 41</span>
-                </span>
+                </a>
+
                 <span class="inline-flex items-center gap-2 rounded-3xl border px-3 py-1 bg-white/60">
                   <i data-lucide="party-popper" class="w-4 h-4"></i>
                   Dress code: Buďte hezký, nebo aspoň vtipní
@@ -281,14 +287,19 @@ div class="flex flex-col sm:flex-row gap-3">
               </p>
 
               <div class="flex flex-col sm:flex-row gap-3 mt-6">
-                <a id="mapsLink"
-                   target="_blank" rel="noreferrer"
-                   class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
-                   href="https://www.google.com/maps/search/?api=1&query=Bohda%C5%A1%C3%ADn%2017">
+                <a
+                  id="mapsLink"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
+                  href="https://www.google.com/maps/search/?api=1&query=Bohda%C5%A1%C3%ADn%2017"
+                >
                   Otevřít mapu <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                 </a>
-                <a href="#ubytovani"
-                  class="inline-flex items-center justify-center gap-2 rounded-3xl border border-zinc-200 px-6 py-3 hover:bg-zinc-50">
+                <a
+                  href="#ubytovani"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl border border-zinc-200 px-6 py-3 hover:bg-zinc-50"
+                >
                   Ubytování
                 </a>
               </div>
@@ -376,9 +387,7 @@ div class="flex flex-col sm:flex-row gap-3">
 
           <div class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover"
-                src="photos/gallery-1.jpg"
-                alt="Galerie 1" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-1.jpg" alt="Galerie 1" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Dozvíte se jestli se vezmeme
@@ -387,9 +396,7 @@ div class="flex flex-col sm:flex-row gap-3">
             </figure>
 
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover object-top"
-                src="photos/gallery-2.jpg"
-                alt="Galerie 2" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover object-top" src="photos/gallery-2.jpg" alt="Galerie 2" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Budete moct kontrolovat kolik spotřebuje Vítek „aněč“.
@@ -398,9 +405,7 @@ div class="flex flex-col sm:flex-row gap-3">
             </figure>
 
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover"
-                src="photos/gallery-3.jpg"
-                alt="Galerie 3" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-3.jpg" alt="Galerie 3" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Budete si moc ukrojit tři kousky dortu
@@ -409,9 +414,7 @@ div class="flex flex-col sm:flex-row gap-3">
             </figure>
 
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover"
-                src="photos/gallery-4.jpg"
-                alt="Galerie 4" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-4.jpg" alt="Galerie 4" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Uvidíte Honzu z mekáče v sauně
@@ -420,9 +423,7 @@ div class="flex flex-col sm:flex-row gap-3">
             </figure>
 
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover"
-                src="photos/gallery-5.jpg"
-                alt="Galerie 5" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-5.jpg" alt="Galerie 5" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Zazpíváte si v Maďarštine
@@ -431,9 +432,7 @@ div class="flex flex-col sm:flex-row gap-3">
             </figure>
 
             <figure class="relative h-56 rounded-3xl overflow-hidden border">
-              <img class="absolute inset-0 w-full h-full object-cover"
-                src="photos/gallery-6.jpg"
-                alt="Galerie 6" loading="lazy" />
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-6.jpg" alt="Galerie 6" loading="lazy" />
               <figcaption class="absolute left-3 bottom-3">
                 <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
                   Uslyšíte důležité proslovy

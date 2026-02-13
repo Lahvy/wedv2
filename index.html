@@ -563,11 +563,6 @@
       if (venueAddressInlineEl) venueAddressInlineEl.textContent = CONFIG.venueAddress;
 
       // Maps link
-      const mapsLinkEl = document.getElementById("mapsLink");
-      if (mapsLinkEl) {
-        const q = encodeURIComponent(`${CONFIG.venueName} ${CONFIG.venueAddress}`);
-        mapsLinkEl.href = `https://www.google.com/maps/search/?api=1&amp;query=${q}`;
-      }
 
       // Pretty date + year
       const weddingDate = new Date(CONFIG.weddingDateISO);

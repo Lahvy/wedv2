@@ -1,1 +1,634 @@
 
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Svatba — Áďa & Dominik</title>
+
+    <!-- Tailwind CDN (ideální pro demo / školení) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      html { scroll-behavior: smooth; }
+      /* jemný reveal efekt */
+      .fade-up { opacity: 0; transform: translateY(14px); transition: all .6s ease; }
+      .fade-up.show { opacity: 1; transform: translateY(0); }
+
+      a.muj-odkaz {
+        color: blue;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+
+      a.muj-odkaz:hover {
+        color: darkred;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-br from-white via-white to-zinc-100 text-zinc-950">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+      <div class="max-w-6xl mx-auto h-16 px-4 flex items-center justify-between border-x border-zinc-200">
+        <a href="#top" class="flex items-center gap-3">
+          <div class="h-10 w-10 shrink-0 rounded-3xl overflow-hidden bg-white flex items-center justify-center">
+            <img
+              src="photos/logo.png"
+              alt="Logo"
+              class="h-full w-full object-contain object-[center_80%] block"
+            />
+          </div>
+          <span class="font-bold text-xl">Áďa &amp; Domíno</span>
+        </a>
+
+        <nav class="hidden md:flex gap-4 text-sm font-medium">
+          <a class="hover:text-black/80 text-zinc-700" href="#pribeh">Příběh</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#harmonogram">Harmonogram</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#misto">Místo</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#parkovani">Parkování</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#ubytovani">Ubytování</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#galerie">Galerie</a>
+          <a class="hover:text-black/80 text-zinc-700" href="#faq">FAQ</a>
+        </nav>
+
+        <div class="hidden md:flex gap-3">
+          <a
+            href="#misto"
+            class="inline-flex items-center gap-2 rounded-3xl bg-zinc-950 text-white px-4 py-2 text-sm hover:bg-zinc-800"
+          >
+            <i data-lucide="map-pin" class="w-4 h-4"></i> Místo konání
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden rounded-2xl border border-zinc-200 p-2 hover:bg-zinc-50">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-4 grid gap-2 text-sm">
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#pribeh">
+            Příběh <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#harmonogram">
+            Harmonogram <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#misto">
+            Místo <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#parkovani">
+            Parkování <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#ubytovani">
+            Ubytování <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#galerie">
+            Galerie <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+          <a class="flex items-center justify-between rounded-3xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50" href="#faq">
+            FAQ <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="max-w-6xl mx-auto px-4">
+      <!-- HERO -->
+      <section class="py-12 md:py-20">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10">
+          <div class="grid lg:grid-cols-[1fr_520px] gap-10 items-center">
+            <div class="space-y-5 fade-up">
+              <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+                <i data-lucide="heart" class="w-4 h-4"></i>
+                <span id="datePretty"></span>
+              </div>
+
+              <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+                <span id="coupleName">Áďa a Dominik</span>
+                <span class="block text-lg md:text-xl mt-3 text-zinc-600 font-medium">
+                  Zveme vás na náš velký den.
+                </span>
+              </h1>
+
+              <p class="text-zinc-600 text-lg max-w-2xl">
+                Přijďte s námi chytit nějakou tu anču nebo více "aněč" a oslavit to s námi.
+              </p>
+
+              <!-- Countdown -->
+              <div class="grid grid-cols-4 gap-3 max-w-md">
+                <div class="rounded-3xl border bg-white/70 p-4 text-center">
+                  <div id="cdD" class="text-2xl font-bold tabular-nums">0</div>
+                  <div class="text-xs text-zinc-500 mt-1">Dní</div>
+                </div>
+                <div class="rounded-3xl border bg-white/70 p-4 text-center">
+                  <div id="cdH" class="text-2xl font-bold tabular-nums">0</div>
+                  <div class="text-xs text-zinc-500 mt-1">Hod</div>
+                </div>
+                <div class="rounded-3xl border bg-white/70 p-4 text-center">
+                  <div id="cdM" class="text-2xl font-bold tabular-nums">0</div>
+                  <div class="text-xs text-zinc-500 mt-1">Min</div>
+                </div>
+                <div class="rounded-3xl border bg-white/70 p-4 text-center">
+                  <div id="cdS" class="text-2xl font-bold tabular-nums">0</div>
+                  <div class="text-xs text-zinc-500 mt-1">Sek</div>
+                </div>
+              </div>
+
+              <!-- CTA buttons (OPRAVENO) -->
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://docs.google.com/forms/d/1jT-LaP5TS-wTti0bZSsO06LP5xmx2DHZ488st326TDw/edit"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
+                >
+                  Potvrdit účast
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+
+               
+              </div>
+
+              <!-- Pills (adresa je klikací na #misto) -->
+              <div class="flex flex-wrap gap-3 text-sm text-zinc-600">
+                <a
+                  href="#misto"
+                  class="inline-flex items-center gap-2 rounded-3xl border px-3 py-1 bg-white/60 hover:bg-white/80"
+                >
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  <span id="venueAddressInline">Bohdašín 17 Červený Kostelec 549 41</span>
+                </a>
+
+                <span class="inline-flex items-center gap-2 rounded-3xl border px-3 py-1 bg-white/60">
+                  <i data-lucide="party-popper" class="w-4 h-4"></i>
+                  Dress code: Buďte hezcí, nebo aspoň vtipní
+                </span>
+              </div>
+            </div>
+
+            <div class="relative h-[360px] md:h-[480px] rounded-3xl overflow-hidden border fade-up">
+              <img
+                id="heroPhoto"
+                class="absolute inset-0 w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1595407753234-0882f1e77954?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                alt="Úvodní fotka / pozvánka"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
+              <div id="heroTip" class="absolute bottom-6 left-6 right-6">
+                <div class="rounded-3xl border border-white/20 bg-black/20 backdrop-blur-md p-4 text-white text-sm flex items-center gap-2">
+                  <i data-lucide="camera" class="w-4 h-4"></i>
+                  Tip: sem pak dejte vaši fotku / pozvánku.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PŘÍBĚH -->
+      <section id="pribeh" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+            <i data-lucide="heart" class="w-4 h-4"></i> Náš příběh
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3">Jak to celé začalo</h2>
+          <p class="text-zinc-600 mt-3 max-w-3xl">
+            Nejdůležitější milníky našeho vztahu v kostce
+          </p>
+
+          <div class="grid sm:grid-cols-4 gap-3 mt-6">
+            <div class="rounded-3xl border bg-white/70 p-4">
+              <div class="text-sm text-zinc-500">Too Hot to Handle</div>
+              <div class="text-2xl font-bold">2021</div>
+            </div>
+            <div class="rounded-3xl border bg-white/70 p-4">
+              <div class="text-sm text-zinc-500">Ádi první ančovička</div>
+              <div class="text-2xl font-bold">2021</div>
+            </div>
+            <div class="rounded-3xl border bg-white/70 p-4">
+              <div class="text-sm text-zinc-500">Porod Gimi</div>
+              <div class="text-2xl font-bold">2022</div>
+            </div>
+            <div class="rounded-3xl border bg-white/70 p-4">
+              <div class="text-sm text-zinc-500">Svatba</div>
+              <div id="weddingYear" class="text-2xl font-bold">2026</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HARMONOGRAM -->
+      <section id="harmonogram" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Harmonogram dne
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3">Jak to bude probíhat?</h2>
+          <p class="text-zinc-600 mt-3 max-w-3xl">
+            Upravte časy dle reality. Struktura v kartách je přehledná a dobře se prezentuje.
+          </p>
+
+          <div class="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">9:00-11:00</div>
+              <div class="text-lg font-bold mt-1">Příjezd hostů</div>
+              <div class="text-zinc-600 mt-2">Welcome drink + Majka a děda Vláďa odevzdávají telefon a fotoaparát</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">12:00</div>
+              <div class="text-lg font-bold mt-1">Obřad</div>
+              <div class="text-zinc-600 mt-2">Jak to dopadne?</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">13:30</div>
+              <div class="text-lg font-bold mt-1">Jídlo a první anča</div>
+              <div class="text-zinc-600 mt-2">Přípitek, hostina a zahájení rybolovu</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">15:00-17:00</div>
+              <div class="text-lg font-bold mt-1">Jídlo a první anča</div>
+              <div class="text-zinc-600 mt-2">Čas na chillík, prostor na ubytování</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">18:00</div>
+              <div class="text-lg font-bold mt-1">Tenhle dort, je jich tu snad padesát?</div>
+              <div class="text-zinc-600 mt-2">Sladká tečka</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-sm text-zinc-500">19:00</div>
+              <div class="text-lg font-bold mt-1">Party</div>
+              <div class="text-zinc-600 mt-2">DJ, tanec a volná zábava</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MÍSTO -->
+      <section id="misto" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="grid lg:grid-cols-2 gap-6 items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+                <i data-lucide="map-pin" class="w-4 h-4"></i> Místo konání
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                <span id="venueName">Bohdašín 17</span>
+              </h2>
+          <p class="text-zinc-600 mt-3 max-w-3xl">
+            Červený Kostelec, 549 41
+          </p>
+
+              <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                <a
+                  id="mapsLink"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center justify-center gap-2 rounded-3xl bg-zinc-950 text-white px-6 py-3 hover:bg-zinc-800"
+                  href="https://maps.app.goo.gl/f3rxPc8VcPMb3asBA"
+                >
+                  Otevřít mapu <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+<a
+  href="https://www.bohdasin17.cz"
+  target="_blank"
+  rel="noreferrer"
+  class="inline-flex items-center justify-center gap-2 rounded-3xl border border-zinc-200 px-6 py-3 hover:bg-zinc-50"
+>
+  Web Bohdašín <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+</a>
+              </div>
+            </div>
+
+            <div class="relative h-[320px] md:h-[420px] rounded-3xl overflow-hidden border">
+              <img
+                class="absolute inset-0 w-full h-full object-cover"
+                src="photos/venue.jpg"
+                alt="Prostor / venue"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARKOVÁNÍ -->
+      <section id="parkovani" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="grid lg:grid-cols-2 gap-6 items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+                <i data-lucide="car" class="w-4 h-4"></i> Parkování
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold mt-3">Parkování</h2>
+              <p class="text-zinc-600 mt-3 max-w-xl">
+                Parkování je možné na louce viz mapka, prosíme parkujte inteligentně. Neblokujte prosím malý plácek před areálem, kde je jen pár míst.
+              </p>
+            </div>
+
+            <div class="relative h-[320px] md:h-[420px] rounded-3xl overflow-hidden border">
+              <img
+                class="absolute inset-0 w-full h-full object-cover"
+                src="photos/parking.png"
+                alt="Parkování"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- UBYTOVÁNÍ -->
+      <section id="ubytovani" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+            <i data-lucide="bed-double" class="w-4 h-4"></i> Ubytování
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3">Ať se vám dobře spí</h2>
+          <p class="text-zinc-600 mt-3 max-w-3xl">
+            Tři jednoduché možnosti — pro demo ideální.
+          </p>
+
+          <div class="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-xs inline-flex rounded-3xl bg-zinc-100 px-3 py-1">Doporučeno</div>
+              <div class="text-lg font-bold mt-3">Na místě (omezeně)</div>
+              <div class="text-zinc-600 mt-2">Pár pokojů přímo ve statku — kdo dřív napíše, ten spí.</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-xs inline-flex rounded-3xl bg-zinc-100 px-3 py-1">Budget</div>
+              <div class="text-lg font-bold mt-3">Penzion u nádraží</div>
+              <div class="text-zinc-600 mt-2">10 minut autem, dobrá dostupnost a snídaně.</div>
+            </div>
+            <div class="rounded-3xl border bg-white p-6">
+              <div class="text-xs inline-flex rounded-3xl bg-zinc-100 px-3 py-1">Komfort</div>
+              <div class="text-lg font-bold mt-3">Hotel v centru</div>
+              <div class="text-zinc-600 mt-2">Komfort + taxi po půlnoci. Pro ty, co chtějí město.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERIE -->
+      <section id="galerie" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+            <i data-lucide="camera" class="w-4 h-4"></i> Galerie
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3">Na co se můžete těšit?</h2>
+          <p class="text-zinc-600 mt-3 max-w-3xl">
+            Později nahraďte vašimi fotkami nebo vložte odkaz na album.
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-1.jpg" alt="Galerie 1" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Dozvíte se jestli se vezmeme
+                </span>
+              </figcaption>
+            </figure>
+
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover object-top" src="photos/gallery-2.jpg" alt="Galerie 2" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Budete moct kontrolovat kolik spotřebuje Vítek „aněč“.
+                </span>
+              </figcaption>
+            </figure>
+
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-3.jpg" alt="Galerie 3" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Budete si moc ukrojit tři kousky dortu
+                </span>
+              </figcaption>
+            </figure>
+
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-4.jpg" alt="Galerie 4" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Uvidíte Honzu z mekáče v sauně
+                </span>
+              </figcaption>
+            </figure>
+
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-5.jpg" alt="Galerie 5" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Zazpíváte si v Maďarštine
+                </span>
+              </figcaption>
+            </figure>
+
+            <figure class="relative h-56 rounded-3xl overflow-hidden border">
+              <img class="absolute inset-0 w-full h-full object-cover" src="photos/gallery-6.jpg" alt="Galerie 6" loading="lazy" />
+              <figcaption class="absolute left-3 bottom-3">
+                <span class="inline-flex items-center rounded-3xl bg-black/55 text-white text-xs px-3 py-1 backdrop-blur">
+                  Uslyšíte důležité proslovy
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-200 p-6 md:p-10 fade-up">
+          <div class="inline-flex items-center gap-2 rounded-3xl bg-white px-3 py-1 text-sm border">
+            <i data-lucide="help-circle" class="w-4 h-4"></i> FAQ
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3">Časté dotazy</h2>
+
+          <div class="mt-6 max-w-3xl grid gap-3">
+            <details class="rounded-3xl border bg-white p-6">
+              <summary class="cursor-pointer font-medium">Mohu s sebou vzít psa, sovu, kočku nebo ropuchu?</summary>
+              <p class="text-zinc-600 mt-3">Prosíme abyste je nechali doma, ne všichni hosté to ocení.</p>
+            </details>
+
+            <details class="rounded-3xl border bg-white p-6">
+              <summary class="cursor-pointer font-medium">Můžu vzít +1 </summary>
+              <p class="text-zinc-600 mt-3">Máme vše napočítané abychom se vešli tak akorát, a zvali jsme jen ty, které opravdu známe. Pokud si nejste jisti, jestli je vaše +1 pozvaná, tak se neváhejte optat prosím.</p>
+            </details>
+
+            <details class="rounded-3xl border bg-white p-6">
+              <summary class="cursor-pointer font-medium">Jaký mám koupit dar?</summary>
+              <p class="text-zinc-600 mt-3">Nic nekupujte, hlavně dorazte a užijte si to s námi ("To je dar sebe sama"). Pokud nám přispějete na svatbu peněžně, budeme ale rádi.</p>
+            </details>
+
+            <details class="rounded-3xl border bg-white p-6">
+              <summary class="cursor-pointer font-medium">Kdy nejpozději potvrdit účast?</summary>
+              <p class="text-zinc-600 mt-3">Ideálně co nejdříve, počítáme zatím se všemi pozvanými, důležité je pak hlavně dát vědět, pokud nebudete moct dorazit.</p>
+            </details>
+
+            <details class="rounded-3xl border bg-white p-6">
+              <summary class="cursor-pointer font-medium">Musím si také dát ančovičku?</summary>
+              <p class="text-zinc-600 mt-3">ANO</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <footer class="py-12">
+        <div class="rounded-3xl border border-zinc-200 bg-white p-6 md:p-8 fade-up flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 shrink-0 rounded-3xl overflow-hidden bg-white flex items-center justify-center">
+              <img
+                src="photos/logo.png"
+                alt="Logo"
+                class="h-full w-full object-contain object-[center_80%] block"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <div class="font-bold"><span id="coupleNameFooter">Áďa a Dominik</span></div>
+              <div class="text-sm text-zinc-600">A upřííímně.... Děkujeme ❤️</div>
+            </div>
+          </div>
+          <div class="text-sm text-zinc-600">© <span id="year"></span> • brm brm</div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // ==== Jednoduchá konfigurace (změň si hodnoty tady) ====
+      const CONFIG = {
+        couple: "Áďa & Dominik",
+        weddingDateISO: "2026-06-27T14:00:00+02:00",
+        venueName: "Bohdašín 17",
+        venueAddress: "Bohdašín 17, Červený Kostelec, 549 41",
+
+        // HERO FOTO (dej soubor do /photos jako intro.jpg / intro.png / intro.webp …)
+        heroPhotoBase: "photos/intro",
+       
+      };
+
+      // Init icons
+      lucide.createIcons();
+
+      // HERO photo loader: zkusí najít photos/intro.* (jpg/png/webp/jpeg/avif)
+      // když nic nenajde, nechá fallback (placeholder)
+      (function setHeroPhoto() {
+        const imgEl = document.getElementById("heroPhoto");
+        if (!imgEl) return;
+
+        const tipEl = document.getElementById("heroTip");
+
+        const candidates = ["png", "jpg", "jpeg", "avif"].map(
+          (ext) => `${CONFIG.heroPhotoBase}.${ext}`
+        );
+
+        // nastav fallback hned (aby se něco zobrazilo okamžitě)
+        imgEl.src = CONFIG.heroPhotoFallback;
+
+        let i = 0;
+        const tryNext = () => {
+          if (i >= candidates.length) return; // nic se nenašlo → zůstane fallback
+          const test = new Image();
+          const url = candidates[i++];
+          test.onload = () => {
+            imgEl.src = url;
+            if (tipEl) tipEl.classList.add("hidden"); // když se načte vlastní fotka, skryj tip
+          };
+          test.onerror = tryNext;
+          test.src = url;
+        };
+
+        tryNext();
+      })();
+
+      // Fill text (bezpečně)
+      const coupleEl = document.getElementById("coupleName");
+      if (coupleEl) coupleEl.textContent = CONFIG.couple;
+
+      const coupleFooterEl = document.getElementById("coupleNameFooter");
+      if (coupleFooterEl) coupleFooterEl.textContent = CONFIG.couple;
+
+      const venueNameEl = document.getElementById("venueName");
+      if (venueNameEl) venueNameEl.textContent = CONFIG.venueName;
+
+      const venueNameInlineEl = document.getElementById("venueNameInline");
+      if (venueNameInlineEl) venueNameInlineEl.textContent = CONFIG.venueName;
+
+      const venueAddressEl = document.getElementById("venueAddress");
+      if (venueAddressEl) venueAddressEl.textContent = CONFIG.venueAddress;
+
+      const venueAddressInlineEl = document.getElementById("venueAddressInline");
+      if (venueAddressInlineEl) venueAddressInlineEl.textContent = CONFIG.venueAddress;
+
+      // Maps link
+
+      // Pretty date + year
+      const weddingDate = new Date(CONFIG.weddingDateISO);
+      const datePrettyEl = document.getElementById("datePretty");
+      if (datePrettyEl) {
+        datePrettyEl.textContent = weddingDate.toLocaleDateString("cs-CZ", { dateStyle: "long" });
+      }
+
+      const weddingYearEl = document.getElementById("weddingYear");
+      if (weddingYearEl) weddingYearEl.textContent = weddingDate.getFullYear();
+
+      // Footer year
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Mobile menu toggle (a zavírání po kliku)
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+        mobileMenu
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", () => mobileMenu.classList.add("hidden")));
+      }
+
+      // Fade-up reveal
+      const els = document.querySelectorAll(".fade-up");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => e.isIntersecting && e.target.classList.add("show"));
+        },
+        { threshold: 0.12 }
+      );
+      els.forEach((el) => io.observe(el));
+
+      // Countdown
+      function updateCountdown() {
+        const now = new Date();
+        let diff = weddingDate.getTime() - now.getTime();
+        diff = Math.max(0, diff);
+
+        const sec = Math.floor(diff / 1000);
+        const d = Math.floor(sec / 86400);
+        const h = Math.floor((sec % 86400) / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+
+        const cdD = document.getElementById("cdD");
+        const cdH = document.getElementById("cdH");
+        const cdM = document.getElementById("cdM");
+        const cdS = document.getElementById("cdS");
+
+        if (cdD) cdD.textContent = d;
+        if (cdH) cdH.textContent = h;
+        if (cdM) cdM.textContent = m;
+        if (cdS) cdS.textContent = s;
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>

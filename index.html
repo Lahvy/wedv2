@@ -1,22 +1,33 @@
 
 <!doctype html>
 <html lang="cs">
+<!doctype html>
+<html lang="cs">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svatba — Áďa & Dominik</title>
+    <title>Svatba — Áďa &amp; Dominik</title>
 
-    <!-- Tailwind CDN (ideální pro demo / školení) -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Lucide icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
       /* jemný reveal efekt */
-      .fade-up { opacity: 0; transform: translateY(14px); transition: all .6s ease; }
-      .fade-up.show { opacity: 1; transform: translateY(0); }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: all 0.6s ease;
+      }
+      .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       a.muj-odkaz {
         color: blue;
@@ -28,7 +39,60 @@
         color: darkred;
       }
     </style>
+
+    <!-- Microsoft Clarity tracking kód -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "vju5u1drly");
+    </script>
   </head>
+
+  <body class="bg-slate-50 text-slate-900">
+    <!--
+      TADY MÁŠ JEN DEMO OBSAH.
+      Ve svém reálném projektu si sem nech svůj existující obsah
+      (sekce se svatbou, program, RSVP formulář atd.).
+    -->
+
+    <main class="min-h-screen flex items-center justify-center">
+      <div class="text-center p-6">
+        <h1 class="text-3xl font-bold mb-2">Svatba — Áďa &amp; Dominik</h1>
+        <p class="text-slate-600">
+          Tvůj web běží na vlastní doméně a Microsoft Clarity už teď sleduje,
+          jak se na něm lidé pohybují. 🎉
+        </p>
+      </div>
+    </main>
+
+    <script>
+      // Příklad: jednoduchý reveal efekt pro elementy s class="fade-up"
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
 
   <body class="min-h-screen bg-gradient-to-br from-white via-white to-zinc-100 text-zinc-950">
     <!-- Header -->

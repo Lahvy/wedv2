@@ -55,33 +55,7 @@
 </script>
   </head>
 
-  <body class="bg-slate-50 text-slate-900">
-    <!--
-      TADY MÁŠ JEN DEMO OBSAH.
-      Ve svém reálném projektu si sem nech svůj existující obsah
-      (sekce se svatbou, program, RSVP formulář atd.).
-    -->
-
-   
-    <script>
-      // Příklad: jednoduchý reveal efekt pro elementy s class="fade-up"
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-
-        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
-      });
-    </script>
-  </body>
-</html>
+ 
 
   <body class="min-h-screen bg-gradient-to-br from-white via-white to-zinc-100 text-zinc-950">
     <!-- Header -->
